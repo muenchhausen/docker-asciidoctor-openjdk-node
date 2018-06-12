@@ -1,2 +1,23 @@
-# docker-asciidoctor-openjdk
-A combined Docker image that includes both Asciidoctor and OpenJDK
+# docker-asciidoctor-openjdk-node
+
+A combined Docker image that includes Asciidoctor, OpenJDK and Node.js.
+
+The motivation for the image: I need a well tested build image, that is able to
+- build applications with Gradle
+- generates AsciiDoc including PlantUML diagrams
+- can also handle Node.js applications with com.moowork.node Gradle plugin
+
+Not all Asciidoctor Gradle dependencies work together. Node.js within Gradle is sometimes tricky. Node.js based on simple Alpine Docker needs some adaptions. A working combination can be found in the test folder. 
+
+To speed up the build here Docker image caching mechanisms are used. Instead of calling 
+ 
+ ./gradlew asciidoctor
+
+all commands are called within a Dockerfile during a docker build. 
+
+References:
+- https://github.com/asciidoctor/docker-asciidoctor
+- https://github.com/asciidoctor/asciidoctor-gradle-examples/tree/master/asciidoc-diagram-to-html-example
+- https://github.com/docker-library/openjdk/tree/master/8/jdk/alpine
+- https://github.com/nodejs/docker-node/tree/master/8/alpine
+

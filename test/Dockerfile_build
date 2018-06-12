@@ -1,0 +1,20 @@
+FROM docker-asciidoctor-openjdk:latest
+
+RUN set -x && apk add --no-cache bats
+
+WORKDIR /app/
+
+COPY gradlew gradlew.bat /app/
+COPY gradle gradle
+# cache gradlew itself
+RUN ./gradlew -v
+
+COPY build.gradle .
+# try to download as many as possible of dependencies here for caching
+RUN ./gradlew resolveDependencies
+
+COPY src src
+RUN ./gradlew clean
+RUN ./gradlew asciidoctor
+
+COPY test_suite.bats .
