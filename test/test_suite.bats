@@ -1,5 +1,17 @@
 #!/usr/bin/env bats
 
+@test "expected openjdk release is installed" {
+  java -version 2>&1 | grep -r 'openjdk version "1\.8\..*"'
+}
+
+@test "expected node release is installed" {
+  node -v | grep v10.
+}
+
+@test "expected asciidoctor release is installed" {
+  asciidoctor -v | grep "Asciidoctor 1.5."
+}
+
 export TMP_GENERATION_DIR="/app/build/asciidoc/html5"
 
 @test "gradle asciidoctor has created an HTML document from basic example" {
