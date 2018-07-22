@@ -1,4 +1,4 @@
-FROM docker-asciidoctor-openjdk:latest
+FROM muenchhausen/docker-asciidoctor-openjdk-node:latest
 
 RUN set -x && apk add --no-cache bats
 
