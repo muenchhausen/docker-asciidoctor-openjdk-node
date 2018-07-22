@@ -1,5 +1,7 @@
 # docker-asciidoctor-openjdk-node [![Build Status](https://travis-ci.org/muenchhausen/docker-asciidoctor-openjdk-node.svg?branch=master)](https://travis-ci.org/muenchhausen/docker-asciidoctor-openjdk-node)
 
+CAUTION: This project is in development and not usable yet!
+
 A combined Docker image that includes Asciidoctor, OpenJDK and Node.js.
 
 The motivation for the image: I need a well tested build image, that is able to
